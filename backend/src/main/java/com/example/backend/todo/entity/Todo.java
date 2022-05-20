@@ -1,8 +1,14 @@
 package com.example.backend.todo.entity;
 
-import lombok.*;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -10,7 +16,6 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 public class Todo {
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
@@ -23,7 +28,8 @@ public class Todo {
 	private Boolean isDone;
 
 	@Builder
-	public Todo(String text, Boolean isDone) {
+	public Todo(Long id, String text, Boolean isDone) {
+		this.id = id;
 		this.text = text;
 		this.isDone = isDone;
 	}
